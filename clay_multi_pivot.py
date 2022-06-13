@@ -13,8 +13,8 @@ fn = 'C:/Users/EHDGZ/outlier_detection/br_clay_content_0-5cm_pred_g_kg.tif'
 rlayer = iface.addRasterLayer(fn, '')
 
 #Variar pivot id para selecionar diferentes feições
-count_pivot = 2179
-while count_pivot <= 2183:
+count_pivot = 1
+while count_pivot <= 21040:
     vlayer.selectByExpression('"PIVOTID"=\'%s\'' %count_pivot,QgsVectorLayer.SetSelection)
     selection = vlayer.selectedFeatures()
     print(count_pivot)
@@ -60,6 +60,6 @@ while count_pivot <= 2183:
         attrs = {idx : float(stats_mean)}
         vlayer.dataProvider().changeAttributeValues({feature.id() : attrs})
     
-    count_pivot += 4
+    count_pivot += 1
     
 vlayer.removeSelection()
